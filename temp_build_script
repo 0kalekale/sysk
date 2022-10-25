@@ -1,0 +1,13 @@
+ #!/usr/bin/env bash
+
+setup_builddir() {
+	mkdir -p target 
+	mkdir -p target/tests
+}
+
+build_tkt_test() {
+	gcc lib/libktk/tkt.c lib/libktk/tests/sample.c -lX11 -I/usr/include/X11 -Iinclude -o target/tests/tkt_sample.out
+}
+
+setup_builddir
+build_tkt_test

@@ -1,0 +1,4 @@
+ritzirc: Ritsu IRC [depends on libktk]
+
+i. simple gui irc with xdcc in ktk 
+ii. c11+ktk

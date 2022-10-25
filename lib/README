@@ -1,0 +1,6 @@
+project sysk libraries
+
+i. libktk : simple x11 gui toolkit 
+ii. libsysk : core library for sysk, which includes common functions and safety wrappers (not that one)
+iii. python/pylibktk : python bindings for libktk
+iv. rust/libktkrs : rust bindings for libktk

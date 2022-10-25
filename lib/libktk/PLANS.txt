@@ -1,0 +1,19 @@
+pillar of project sysk
+
+i. as simple and easy as possible
+ii. very customizable + easy to make themes 
+iii. C11 with libX11 (maybe wayland if things workout)
+
+must have features:
+- embeddeding any opengl/(vulkan?) programs, including libmpv 
+- video playing (with libmpv)
+- audio playing (with libmpv or libav)
+- text writer (for my ultimate IDE)
+- menus buttons layouts and the basic gui stuff 
+
+themeing: 
+	/usr/share/libktk/themes/sample 
+	sample/ will contain grahpics and scripts which will be standardized 
+	programs will be able to force themes  
+	fancy window border themes 
+	floating widgets

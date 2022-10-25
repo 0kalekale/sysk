@@ -1,0 +1,12 @@
+ritzdit - Ritsu Editor [depends upon libktk and pylibktk]
+
+a simple text editor, with minimal features 
+- find/search
+- find and replace 
+- read/write
+- copy/paste
+- line numbering 
+- terminal embeding? (embedding st?) 
+- no built in syntax highliting, defining syntax highliting and themes with a script  
+- no gui elements other than the editor itself 
+- c11 with only libc, libktk, libksys 

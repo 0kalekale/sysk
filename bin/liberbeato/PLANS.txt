@@ -1,0 +1,6 @@
+liberbeato - liber beatoriche [depends upon libktk and pylibktk]
+
+i. in python3 probably 
+ii. with libktk bindings 
+iii. pdf and related document reader 
+vi. built in public domain book/texts/literature look up (project guttenberg)

@@ -1,0 +1,16 @@
+miowatch - a video player for anime watching (and youtube) [depends upon libktk and pylibktk]
+
+i. libktk with python
+ii. just a layer on top of mpv
+iii. anilist.co api support 
+
+modes:
+	anime-mode:
+		watch anime locally and update to anilist (updating to anilist should be very easy)
+	yt-mode:
+		watch youtube (along with comments and possibly recommendations, playlist support, downloading) (everything recomendation should be very easy)
+	cytube-mode*:
+		cytube with sync and chat (not sure if cytube api is a thing)
+	twitch-mode*:
+		twitch with chat (should be very easy) 
+	

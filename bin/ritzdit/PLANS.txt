@@ -1,4 +1,4 @@
-ritzdit - Ritsu Editor [depends upon libktk and pylibktk]
+ritzdit - Ritsu Editor [depends upon libktk and syskst]
 
 a simple text editor, with minimal features 
 - find/search

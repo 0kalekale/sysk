@@ -6,6 +6,6 @@ int main() {
 	ktk_init();
 	ktk_create_window(400, 400);
 	ktk_set_window_name("TEST TEST");
-	sleep(1);
+	ktk_sample_event_loop();
 	ktk_close();
 }

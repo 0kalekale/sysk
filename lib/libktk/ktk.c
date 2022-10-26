@@ -54,11 +54,17 @@ void ktk_create_window(int x, int y) {
 
 	g = xcb_generate_id(c);
 	xcb_create_gc(c, g, w, mask, values);
+	
+	xcb_map_window(c, w);
 } 
 
 void ktk_set_window_name(const char *window_name) {
 	xcb_change_property(c, XCB_PROP_MODE_REPLACE, w, XCB_ATOM_WM_NAME, XCB_ATOM_STRING, 8, strlen(window_name), window_name);
 	 xcb_flush(c);
+}
+
+void ktk_sample_event_loop() {
+	pause();
 }
  
 void ktk_close() {

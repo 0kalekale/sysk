@@ -15,53 +15,52 @@
     You should have received a copy of the GNU Affero General Public License
     along with this program.  If not, see <https://www.gnu.org/licenses/>.
 */
-#include <X11/Xlib.h>
-#include <X11/Xutil.h>
-#include <X11/Xos.h>
+#include <xcb/xcb.h>
+#include <stdio.h>
 #include <stdlib.h>
+#include <sys/types.h>
+#include <string.h>
 #include <unistd.h>
 
-Display *dis;
-int screen;
-Window win;
-GC gc; 
-XEvent e;
+xcb_connection_t *c;
+xcb_screen_t *s;
+xcb_window_t w;
+xcb_gcontext_t g;
+xcb_generic_event_t *e;
 
-void ktk_init(int x, int y, const char *window_name)  {
-	unsigned long black, white;
-
-	dis = XOpenDisplay((char *)0);
-	screen = DefaultScreen(dis);
-
-	black = BlackPixel(dis, screen);
-	white = WhitePixel(dis, screen);
-	
-	win = XCreateSimpleWindow(dis, DefaultRootWindow(dis), 0, 0, 200, 300, 5, white, black);
-	
-	XSetStandardProperties(dis,win, window_name,"HI!",None,NULL,0,NULL);
-	XSelectInput(dis, win, ExposureMask|ButtonPressMask|KeyPressMask);
-	
-	gc=XCreateGC(dis, win, 0,0);
-	
-	XSetBackground(dis,gc,white);
-	XSetForeground(dis,gc,black);
-	XClearWindow(dis, win);
-	XMapRaised(dis, win);
-	
-	while (1) {
-		XNextEvent(dis, &e);
-		if (e.type == Expose) {
-			XFillRectangle(dis, win, DefaultGC(dis, screen), 20, 20, 10, 10);
-			XDrawString(dis, win, DefaultGC(dis, screen), 10, 50, window_name, strlen(window_name));
+void ktk_init()  {
+	c = xcb_connect(NULL, NULL);
+	if (xcb_connection_has_error(c) > 0) {
+			fprintf(stderr, "[ERROR] : could not open display");	
+			exit(1);
 		}
-	if (e.type == KeyPress)
-		break;
-   	}
+
+	s = xcb_setup_roots_iterator(xcb_get_setup(c)).data;
+}
+
+void ktk_create_window(int x, int y) {
+	uint32_t mask = XCB_CW_BACK_PIXEL | XCB_CW_EVENT_MASK;
+	
+	uint32_t values[2];
+	values[0] = s->white_pixel;
+	values[1] = XCB_EVENT_MASK_EXPOSURE | XCB_EVENT_MASK_KEY_PRESS;
+	
+	w = xcb_generate_id(c);	
+	xcb_create_window (c, XCB_COPY_FROM_PARENT, w, s->root, 10, 10, x, y, 1, XCB_WINDOW_CLASS_INPUT_OUTPUT, s->root_visual, mask, values);
+	
+	mask = XCB_GC_FOREGROUND | XCB_GC_GRAPHICS_EXPOSURES;
+	values[0] = s->black_pixel;
+	values[1] = 0;
+
+	g = xcb_generate_id(c);
+	xcb_create_gc(c, g, w, mask, values);
 } 
 
+void ktk_set_window_name(const char *window_name) {
+	xcb_change_property(c, XCB_PROP_MODE_REPLACE, w, XCB_ATOM_WM_NAME, XCB_ATOM_STRING, 8, strlen(window_name), window_name);
+	 xcb_flush(c);
+}
+ 
 void ktk_close() {
-	XFreeGC(dis, gc);
-	XDestroyWindow(dis,win);
-	XCloseDisplay(dis);	
-	exit(0);
+	xcb_disconnect(c);
 }

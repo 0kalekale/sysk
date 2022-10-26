@@ -6,7 +6,7 @@ setup_builddir() {
 }
 
 build_ktk_test() {
-	gcc lib/libktk/ktk.c lib/libktk/tests/sample.c -lX11 -I/usr/include/X11 -Iinclude -o target/tests/ktk_sample.out
+	gcc lib/libktk/ktk.c lib/libktk/tests/sample.c -lX11 -lxcb -I/usr/include -Iinclude -o target/tests/ktk_sample.out
 }
 
 setup_builddir

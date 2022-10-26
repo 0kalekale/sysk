@@ -46,7 +46,8 @@ void ktk_create_window(int x, int y) {
 	values[1] = XCB_EVENT_MASK_EXPOSURE | XCB_EVENT_MASK_KEY_PRESS;
 	
 	w = xcb_generate_id(c);	
-	xcb_create_window (c, XCB_COPY_FROM_PARENT, w, s->root, 10, 10, x, y, 1, XCB_WINDOW_CLASS_INPUT_OUTPUT, s->root_visual, mask, values);
+	xcb_create_window (c, XCB_COPY_FROM_PARENT, w, s->root, 10, 10, x, y, 1,
+					   XCB_WINDOW_CLASS_INPUT_OUTPUT, s->root_visual, mask, values);
 	
 	mask = XCB_GC_FOREGROUND | XCB_GC_GRAPHICS_EXPOSURES;
 	values[0] = s->black_pixel;
@@ -59,7 +60,8 @@ void ktk_create_window(int x, int y) {
 } 
 
 void ktk_set_window_name(const char *window_name) {
-	xcb_change_property(c, XCB_PROP_MODE_REPLACE, w, XCB_ATOM_WM_NAME, XCB_ATOM_STRING, 8, strlen(window_name), window_name);
+	xcb_change_property(c, XCB_PROP_MODE_REPLACE, w, XCB_ATOM_WM_NAME, XCB_ATOM_STRING, 8,
+						strlen(window_name), window_name);
 	 xcb_flush(c);
 }
 

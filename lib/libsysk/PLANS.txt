@@ -1,8 +1,4 @@
-i. implement `Result` with macros 
-ii. new entry point for program for `Result`
-	example: https://youtu.be/5PciKJW1rUc
-iii. wrappers libc functions wtih `Result` (if needed)
-iii. string types and safe wrappers for string.h
+ditch plan i-iii because might as well write a new language at that point (no template no exactly convinient to implement)
 iv. vector mathematics and related functions and types 
 v. POSIX compitable 
 vi. in C11 (try not to use GNU11 challenge)

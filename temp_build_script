@@ -11,10 +11,20 @@ setup_builddir() {
 build_libktk() {
 	cc $CFLAGS -std=$CSTD -c lib/libktk/ktk.c -lX11 -lxcb -I/usr/include -Iinclude -o target/libktk.a
 }
+
+build_libsysk() {
+	cc $CFLAGS -std=$CSTD -c lib/libsysk/web/http.c -o target/libsysk_web.o
+}
 build_ktk_test() {
-	cc $CFLAGS-std=$CSTD lib/libktk/tests/sample.c -Ltarget -lktk -lX11 -lxcb -I/usr/include -Iinclude -o target/tests/ktk_sample.out
+	cc $CFLAGS -std=$CSTD lib/libktk/tests/sample.c -Ltarget -lktk -lX11 -lxcb -I/usr/include -Iinclude -o target/tests/ktk_sample.out
+}
+
+build_sysk_http_test() {
+	cc $CFLAGS -std=$CSTD lib/libsysk/web/tests/http_test.c target/libsysk_web.o -Iinclude -o target/tests/http_test.out
 }
 
 setup_builddir
 build_libktk
+build_libsysk
 build_ktk_test
+build_sysk_http_test

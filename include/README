@@ -1,1 +1,4 @@
-include files for project sysk
+header files for project sysk libraries 
+
+must have -I$THIS_DIR flag when using sysk libraries, system wide install not planned. 
+also statically link everything from target/, dynamic linking not planned yet.

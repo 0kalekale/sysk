@@ -1,4 +1,4 @@
-miowatch - a video player for anime watching (and youtube) [depends upon libktk and pylibktk]
+miowatch - a video player for anime watching (and youtube) [depends upon libktk and libsyskweb]
 
 i. libktk with python
 ii. just a layer on top of mpv

@@ -1,5 +1,5 @@
 ditch plan i-iii because might as well write a new language at that point (no template no exactly convinient to implement)
 iv. vector mathematics and related functions and types 
 v. POSIX compitable 
-vi. in C11 (try not to use GNU11 challenge)
+vi. -in C11 (try not to use GNU11 challenge)- <- GNU11 it is
 vii. json? regex? lexer? parser? maybe!

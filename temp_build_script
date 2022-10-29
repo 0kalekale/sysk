@@ -1,7 +1,9 @@
  #!/usr/bin/env bash
 
-CSTD=c11 					# C11 standard 
-CFLAGS="-Wall -Wextra -Werror -pedantic "	# basic cflags
+# GNU11 standard
+CSTD=gnu11
+# Basic CFLAGS
+CFLAGS="-Wall -Wextra -Werror -pedantic "
 
 setup_builddir() {
 	mkdir -p target 
@@ -13,7 +15,7 @@ build_libktk() {
 }
 
 build_libsysk() {
-	cc $CFLAGS -std=$CSTD -c lib/libsysk/web/http.c -o target/libsysk_web.o
+	cc $CFLAGS -std=$CSTD -c lib/libsysk/web/http.c -Iinclude -o target/libsysk_web.o
 }
 build_ktk_test() {
 	cc $CFLAGS -std=$CSTD lib/libktk/tests/sample.c -Ltarget -lktk -lX11 -lxcb -I/usr/include -Iinclude -o target/tests/ktk_sample.out

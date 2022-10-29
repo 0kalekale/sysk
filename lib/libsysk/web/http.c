@@ -21,54 +21,46 @@
 #include <string.h>
 #include <stdint.h>
 #include <unistd.h>
+#include <netdb.h>
 #include <arpa/inet.h>
 #include <sys/socket.h>
+#include <sys/types.h>
 
 #include <sysk/web/http.h>
 
 int sock;
-int sockfd;
 
-int http_connect(uint16_t port, const char* addr) {
+int http_connect(const char* port, const char* host) {
 
-	if (!(sock = socket(AF_INET, SOCK_STREAM, 0))) {
-		fprintf(stderr,  "[error] : could not create a socket");
+	struct addrinfo hints = {0}, *addrs;
+	hints.ai_family = AF_INET;
+	hints.ai_socktype = SOCK_STREAM;
+	hints.ai_protocol = IPPROTO_TCP;
+
+	getaddrinfo(host, port, &hints, &addrs);
+
+	for(struct addrinfo *addr = addrs; addr != NULL; addr = addr->ai_next) {
+        if(!(sock = socket(addr->ai_family, addr->ai_socktype, addr->ai_protocol)))
+			return 1;
+        if (connect(sock, addr->ai_addr, addr->ai_addrlen) == 0)
+            break;
+		sock = -1; // could not connect.
+    }
+    freeaddrinfo(addrs);
+	return 0;
+}
+
+int get(char *message, char *resp_buffer, int buffsize) {
+
+	if(!send(sock, message, strlen(message), 0)) {
+		fprintf(stdout, "[error] could not send message");
 		return 1;
 	}
 
-	if (!inet_addr(addr)) {
-		fprintf(stderr, "[error] : not a valid address");
-		return 1;
-	}
-
-	struct sockaddr_in serv_addr;
-	serv_addr.sin_family = AF_INET;
-	serv_addr.sin_port = htons(port);
-
-	if(!(sockfd = connect(sock, (struct sockaddr*)&serv_addr, sizeof(serv_addr)))) {
-		fprintf(stderr, "[error] : could not create connection");
+	if(!read(sock, resp_buffer, buffsize)) {
+		fprintf(stdout, "[error] could not read response into buffer");
 		return 1;
 	}
 	return 0;
-
-}
-
-int get(char *message, void* resp_buffer) {
-
-	if(!message) {
-		fprintf(stderr, "[error] null pointer *message");
-		return 1;
-	}
-
-	if(!send(sock, message, strlen(message), 0)) {
-		fprintf(stderr, "[error] could not send message");
-		return 1;
-	}
-
-	// TODO: read bytes one by one and append to butter.
-	if(!read(sock, resp_buffer, sizeof(resp_buffer))) /* VERY bad way to do this */{
-		fprintf(stderr, "[error] could not read response into buffer");
-		return 1;
-	}
 
 }

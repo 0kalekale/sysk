@@ -25,4 +25,5 @@ typedef struct server_info {
 } server_info;
 
 int http_connect(server_info *server);
-int get(char* path, char* resp_buffer, int buffsize, server_info *server);
+int get(char* path, server_info *server);
+char* parse(char *ln, int pos); // FIXME: this should not be here

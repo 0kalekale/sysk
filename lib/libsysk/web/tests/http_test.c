@@ -3,7 +3,6 @@
 #include <string.h>
 #include <sysk/web/http.h>
 
-#define BUFFSIZE 1024*50
 
 int main() {
 
@@ -13,12 +12,11 @@ int main() {
 
 	http_connect(server);
 
-	char *buffer = malloc(BUFFSIZE);
+	char *resp = get("/http.txt", server);
+	printf("%s", resp);
 
-	get("/http.txt", buffer, BUFFSIZE, server);
-	printf("%s", buffer);
 
-	free(buffer);
+	free(resp);
 	free(server);
 
 	return 0;

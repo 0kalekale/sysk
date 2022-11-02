@@ -3,15 +3,23 @@
 #include <string.h>
 #include <sysk/web/http.h>
 
-#define MSG "GET /http.txt HTTP/1.1\r\nUser-Agent: libsysk/0.1\r\nHOST:0kalekale.gitlab.io\r\n\r\n"
 #define BUFFSIZE 1024*50
+
 int main() {
 
-	http_connect("80", "0kalekale.gitlab.io");
+	server_info *server = malloc(1024);
+	server->port = "80";
+	server->host = "0kalekale.gitlab.io";
+
+	http_connect(server);
 
 	char *buffer = malloc(BUFFSIZE);
-	get(MSG, buffer, BUFFSIZE);
+
+	get("/http.txt", buffer, BUFFSIZE, server);
 	printf("%s", buffer);
+
+	free(buffer);
+	free(server);
 
 	return 0;
 }

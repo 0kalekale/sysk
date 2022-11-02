@@ -19,5 +19,10 @@
 #pragma once
 #include <stdint.h>
 
-int http_connect(const char* port, const char* host);
-int get(char* message, char* resp_buffer, int buffsize);
+typedef struct server_info {
+    const char *port;
+    const char *host;
+} server_info;
+
+int http_connect(server_info *server);
+int get(char* path, char* resp_buffer, int buffsize, server_info *server);

@@ -30,14 +30,14 @@
 
 int sock;
 
-int http_connect(const char* port, const char* host) {
+int http_connect(server_info *server) {
 
 	struct addrinfo hints = {0}, *addrs;
 	hints.ai_family = AF_INET;
 	hints.ai_socktype = SOCK_STREAM;
 	hints.ai_protocol = IPPROTO_TCP;
 
-	getaddrinfo(host, port, &hints, &addrs);
+	getaddrinfo(server->host, server->port, &hints, &addrs);
 
 	for(struct addrinfo *addr = addrs; addr != NULL; addr = addr->ai_next) {
         if(!(sock = socket(addr->ai_family, addr->ai_socktype, addr->ai_protocol)))
@@ -50,9 +50,18 @@ int http_connect(const char* port, const char* host) {
 	return 0;
 }
 
-int get(char *message, char *resp_buffer, int buffsize) {
+int get(char *path, char *resp_buffer, int buffsize, server_info *server) {
 
-	if(!send(sock, message, strlen(message), 0)) {
+	// Request builder
+	char request[1024];
+	sprintf(request, "GET %s HTTP/1.1\r\n\
+User-Agent: libsys/0.1\r\n\
+Host: %s\r\n\r\n",
+					path, server->host);
+	//TODO: HTTPs
+	//TODO: Custom UserAgent
+
+	if(!send(sock, request, strlen(request), 0)) {
 		fprintf(stdout, "[error] could not send message");
 		return 1;
 	}

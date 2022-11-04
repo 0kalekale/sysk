@@ -12,7 +12,7 @@ int main() {
 
 	http_connect(server);
 
-	char *resp = get("/http.txt", server);
+	char *resp = get("/http.txt", server); // returns alloc'ed buffer, must free.
 	printf("%s", resp);
 
 

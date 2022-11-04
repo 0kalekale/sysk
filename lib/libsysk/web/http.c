@@ -63,58 +63,48 @@ Host: %s\r\n\r\n",
 
 	if(!send(sock, request, strlen(request), 0)) {
 		fprintf(stdout, "[error] could not send message"); // TODO: proper logs
-		return 1;
+		exit(1);
 	}
 
 	char *resp_buffer = malloc(1024*50); // MUST FREE THIS
-	/*
-	if(!read(sock, resp_buffer, buffsize)) {
+
+	// not sure about the implications of sending to and reading from the socket twice.
+	// TODO: improve on this.
+	if(!read(sock, resp_buffer, 1024*50)) {
 		fprintf(stdout, "[error] could not read response into buffer");
-		return 1;
+		exit(1);
 	}
-	*/
 
 	// finding Content-Length for proper re-allocation of resp_buffer
-	int content_length;
+	int content_length = 1024*50;
 
-	// FIXME: not sure if this even works
-	// should be fixed in the next commit
-	// i.e tomorrow
-	// because its sleeply time today
-	// gn
-	while(fgets(resp_buffer, 1024, sock)) {
-		char *tmp = strdup(line); // this def doesnt work lmao 2lazy2work2day
-		char *attr = parse(tmp, 1);
-		if(strcmp(attr, "Content-Length")) {
-			content_length = atoi(parse(tmp, 2));
-			free(tmp);
+	// this should work without problems now :^) also my back hurts ouch
+	char *token = strtok(resp_buffer, "\n");
+
+	while(token != NULL) {
+		if(strncmp(token, "Content-Length", 15)) {
+			printf("found\n");fflush(stdout);
+			char *ptr = strstr(token, " ");
+			content_length += atoi(ptr);
 			break;
 		}
+		token = strtok(NULL, "\n");
+	}
+
+	if(!send(sock, request, strlen(request), 0)) {
+		fprintf(stdout, "[error] could not send message"); // TODO: proper logs
+		exit(1);
 	}
 
 	free(resp_buffer);
-	resp_buffer = malloc((1024*50)+(content_length*sizeof(char)));
 
-	if(!read(sock, resp_buffer, buffsize)) {
+	char *r = malloc(content_length*sizeof(char));
+
+	if(!read(sock, r, content_length*sizeof(char))) {
 		fprintf(stdout, "[error] could not read response into buffer"); // TODO: proper logs
 	}
 
-	return resp_buffer;
+	// TODO: return a struct with pointers to different parts of "r" i.e respone headers, body
+	return r;
 
-}
-
-// parse colon seperated string
-// TODO: move this to libsys/parser/colonsv.h
-// pos can only be 1 or 2
-// TODO: rewrite this, this is very unsafe
-// line to line copied from https://stackoverflow.com/questions/12911299/read-csv-file-in-c
-char* parse(char *ln, int pos) {
-	char* token;
-	for (token = strtok(ln, ":");
-		token && *token;
-		token = strtok(NULL, ";\n")) {
-		if (!--num)
-			return token;
-	}
-	return NULL;
 }

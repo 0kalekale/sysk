@@ -24,6 +24,7 @@ typedef struct server_info {
     const char *host;
 } server_info;
 
+//TODO: a response struct with pointers
+
 int http_connect(server_info *server);
-int get(char* path, server_info *server);
-char* parse(char *ln, int pos); // FIXME: this should not be here
+char* get(char* path, server_info *server);

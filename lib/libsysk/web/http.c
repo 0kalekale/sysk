@@ -83,7 +83,6 @@ Host: %s\r\n\r\n",
 
 	while(token != NULL) {
 		if(strncmp(token, "Content-Length", 15)) {
-			printf("found\n");fflush(stdout);
 			char *ptr = strstr(token, " ");
 			content_length += atoi(ptr);
 			break;

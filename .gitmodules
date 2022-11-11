@@ -1,0 +1,6 @@
+[submodule "bin/granthalaya"]
+	path = bin/granthalaya
+	url = https://gitlab.com/0kalekale/granthalaya
+[submodule "bin/lambdadelta"]
+	path = bin/lambdadelta
+	url = https://gitlab.com/0kalekale/lambdadelta

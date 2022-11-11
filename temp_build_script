@@ -1,9 +1,12 @@
  #!/usr/bin/env bash
-
-# GNU11 standard
-CSTD=gnu11
+# TODO: move to meson
+# C11 standard
+CSTD=c11
 # Basic CFLAGS
 CFLAGS="-Wall -Wextra -Werror -pedantic "
+
+RUSTC=rustc
+RUSTFLAGS=
 
 setup_builddir() {
 	mkdir -p target 
@@ -11,22 +14,32 @@ setup_builddir() {
 }
 
 build_libktk() {
+	echo "CC lib/libktk/ktk.c"
 	cc $CFLAGS -std=$CSTD -c lib/libktk/ktk.c -lX11 -lxcb -I/usr/include -Iinclude -o target/libktk.a
 }
 
 build_libsysk() {
-	cc $CFLAGS -std=$CSTD -c lib/libsysk/web/http.c -Iinclude -o target/libsysk_web.o
+	echo "CC NULL"
 }
+
+build_libkinet() {
+	$RUSTC lib/libkinet/lib.rs --crate-type=cdylib -o target/libkinet.so
+	echo "RUSTC lib/libinet/lib.rs"
+}
+
 build_ktk_test() {
+	echo "CC lib/libktk/tests/sample.c"
 	cc $CFLAGS -std=$CSTD lib/libktk/tests/sample.c -Ltarget -lktk -lX11 -lxcb -I/usr/include -Iinclude -o target/tests/ktk_sample.out
 }
 
-build_sysk_http_test() {
-	cc $CFLAGS -std=$CSTD lib/libsysk/web/tests/http_test.c target/libsysk_web.o -Iinclude -o target/tests/http_test.out
+build_libkinet_test() {
+	cc $CFLAGS -std=$CSTD lib/libkinet/test.c -o target/kinet_test.out -L. -l:target/libkinet.so 
+	echo "CC lib/libkinet/test.c"
 }
 
 setup_builddir
 build_libktk
 build_libsysk
+build_libkinet 
 build_ktk_test
-build_sysk_http_test
+build_libkinet_test

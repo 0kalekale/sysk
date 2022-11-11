@@ -27,4 +27,5 @@ typedef struct server_info {
 //TODO: a response struct with pointers
 
 int http_connect(server_info *server);
+void http_disconnect();
 char* get(char* path, server_info *server);

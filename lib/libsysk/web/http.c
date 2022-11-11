@@ -50,6 +50,11 @@ int http_connect(server_info *server) {
 	return 0;
 }
 
+// TODO: improve in this
+void http_disconnect() {
+	close(sock);	
+}
+ 
 char* get(char *path, server_info *server) {
 
 	// Request builder

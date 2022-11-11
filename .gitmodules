@@ -4,3 +4,6 @@
 [submodule "bin/lambdadelta"]
 	path = bin/lambdadelta
 	url = https://gitlab.com/0kalekale/lambdadelta
+[submodule "bin/CunnyWM"]
+	path = bin/CunnyWM
+	url = https://gitlab.com/0kalekale/CunnyWM

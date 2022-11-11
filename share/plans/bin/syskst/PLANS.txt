@@ -1,8 +1,0 @@
-syskst - systemk's simple terminal [maybe depends on libktk] 
-
-i.fork of sucklesses' st
-	https://st.suckless.org/
-ii. add all the patches to make it usable 
-iii. rewrite it in libktk instead of raw x11
-iv. source config to text config 
-v. libsyskst for embeding syskst in other programs 

@@ -1,9 +1,0 @@
-ritzchan - RitsuChannel [depends upon libktk and libsysk]
-
-a simple imageboard client with libktk
-
-i. in c11 with libsyskweb
-ii. 4chan along with other popular imageboard support 
-iii. reverse image search and archive support (sauceNAO API and desu/fooka API)
-iv. bookmark threads
-v. notifications 

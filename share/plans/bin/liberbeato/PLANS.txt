@@ -1,6 +1,0 @@
-liberbeato - liber beatoriche [depends upon libktk and libsyskweb]
-
-i. c11 and libsyskweb
-ii. with libktk bindings 
-iii. pdf and related document reader 
-vi. built in public domain book/texts/literature look up (project guttenberg)

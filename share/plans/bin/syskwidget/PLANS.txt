@@ -1,5 +1,0 @@
-ksyswidgets - little floating widgets for system information like battery, ram, cpu and date [depends upon libktk] 
-
-- small 
-- 0 cpu usage
-- anime girls  

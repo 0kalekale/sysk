@@ -1,3 +1,0 @@
-syskalender - system k calender 
-
-a simple ktk calender with Sambat and Gregorian calenders (including configs for holidays and important dates)

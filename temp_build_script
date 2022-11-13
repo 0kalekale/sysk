@@ -42,6 +42,11 @@ build_cat() {
 	echo "RUSTC bin/cat/cat.rs"
 }
 
+build_date() {
+	cc $CFLAGS -std=$CSTD bin/date/date.c -o target/date
+	echo "CC bin/date/date.c"
+}
+
 setup_builddir
 build_libktk
 build_libsysk
@@ -49,3 +54,4 @@ build_libkinet
 build_ktk_test
 build_libkinet_test
 build_cat
+build_date

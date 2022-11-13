@@ -1,5 +1,5 @@
  #!/usr/bin/env bash
-# TODO: move to meson
+# TODO: move to make or meson
 # C11 standard
 CSTD=c11
 # Basic CFLAGS
@@ -37,9 +37,15 @@ build_libkinet_test() {
 	echo "CC lib/libkinet/test.c"
 }
 
+build_cat() {
+	$RUSTC bin/cat/cat.rs -o target/cat
+	echo "RUSTC bin/cat/cat.rs"
+}
+
 setup_builddir
 build_libktk
 build_libsysk
 build_libkinet 
 build_ktk_test
 build_libkinet_test
+build_cat

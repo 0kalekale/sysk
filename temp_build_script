@@ -14,42 +14,47 @@ setup_builddir() {
 }
 
 build_libktk() {
-	echo "CC lib/libktk/ktk.c"
+	echo "CC	lib/libktk/ktk.c"
 	cc $CFLAGS -std=$CSTD -c lib/libktk/ktk.c -lX11 -lxcb -I/usr/include -Iinclude -o target/libktk.a
 }
 
 build_libsysk() {
-	echo "CC NULL"
+	echo "CC	NULL"
 }
 
 build_libkinet() {
 	$RUSTC lib/libkinet/lib.rs --crate-type=cdylib -o target/libkinet.so
-	echo "RUSTC lib/libinet/lib.rs"
+	echo "RUSTC	lib/libinet/lib.rs"
 }
 
 build_ktk_test() {
-	echo "CC lib/libktk/tests/sample.c"
+	echo "CC	lib/libktk/tests/sample.c"
 	cc $CFLAGS -std=$CSTD lib/libktk/tests/sample.c -Ltarget -lktk -lX11 -lxcb -I/usr/include -Iinclude -o target/tests/ktk_sample.out
 }
 
 build_libkinet_test() {
 	cc $CFLAGS -std=$CSTD lib/libkinet/test.c -o target/kinet_test.out -L. -l:target/libkinet.so 
-	echo "CC lib/libkinet/test.c"
+	echo "CC	lib/libkinet/test.c"
 }
 
 build_cat() {
 	$RUSTC bin/cat/cat.rs -o target/cat
-	echo "RUSTC bin/cat/cat.rs"
+	echo "RUSTC	bin/cat/cat.rs"
 }
 
 build_date() {
 	cc $CFLAGS -std=$CSTD bin/date/date.c -o target/date
-	echo "CC bin/date/date.c"
+	echo "CC	bin/date/date.c"
 }
 
 build_uname() {
 	cc $CFLAGS -std=$CSTD bin/uname/uname.c -o target/uname
-	echo "CC bin/uname/uname.c"
+	echo "CC	bin/uname/uname.c"
+}
+
+build_sleep() {
+	cc $CFLAGS -std=$CSTD bin/sleep/sleep.c -o target/sleep
+	echo "CC	bin/sleep/sleep.c"
 }
 
 setup_builddir
@@ -60,3 +65,4 @@ build_ktk_test
 build_libkinet_test
 build_cat
 build_date
+build_sleep

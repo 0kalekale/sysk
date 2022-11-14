@@ -1,3 +1,6 @@
+#![allow(dead_code)]
+#![allow(unused_must_use)] // only for now
+
 use std::env;
 use std::io;
 

@@ -47,6 +47,11 @@ build_date() {
 	echo "CC bin/date/date.c"
 }
 
+build_uname() {
+	cc $CFLAGS -std=$CSTD bin/uname/uname.c -o target/uname
+	echo "CC bin/uname/uname.c"
+}
+
 setup_builddir
 build_libktk
 build_libsysk

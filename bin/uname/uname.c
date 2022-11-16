@@ -50,7 +50,7 @@ int main(int argc, char *argv[]) {
     exit(0);
   }
 
-  for (int i = 0; i < argc; i++) {
+  for (int i = 1; i < argc; i++) {
     
     if (strcmp(argv[i], "-a") == 0) {
       printf("%s ", name.sysname);
@@ -58,37 +58,35 @@ int main(int argc, char *argv[]) {
       printf("%s ", name.release);
       printf("%s ", name.version);
       printf("%s\n", name.machine);
+      fflush(stdout);
       exit(0);
     }
     
     // TODO: figure out how to get OS name instead of printing kernel name
     // TODO: add proper arg support like `uname -srn`, `uname -sr -nv` or `uname --kernel-version`
     
-    if (strcmp(argv[i], "-s") == 0 || strcmp(argv[i], "-o") == 0) {
+    else if (strcmp(argv[i], "-s") == 0 || strcmp(argv[i], "-o") == 0) {
       printf("%s ", name.sysname);
     }
 
-    if (strcmp(argv[i], "-n") == 0) {
+    else if (strcmp(argv[i], "-n") == 0) {
       printf("%s ", name.nodename);
     }
 
-    if (strcmp(argv[i], "-r") == 0) {
+    else if (strcmp(argv[i], "-r") == 0) {
       printf("%s ", name.release);
     }
     
-    if (strcmp(argv[i], "-v") == 0) {
+    else if (strcmp(argv[i], "-v") == 0) {
       printf("%s ", name.version);
     }
           
-    if (strcmp(argv[i], "-m") == 0) {
+    else if (strcmp(argv[i], "-m") == 0) {
       printf("%s ", name.machine);
     }
 
     else {
-      if (i == argc)
-	help(); 
-      else
-	continue;
+      help();
     }
 
   }

@@ -52,11 +52,6 @@ build_uname() {
 	echo "CC	bin/uname/uname.c"
 }
 
-build_sleep() {
-	cc $CFLAGS -std=$CSTD bin/sleep/sleep.c -o target/sleep
-	echo "CC	bin/sleep/sleep.c"
-}
-
 setup_builddir
 build_libktk
 build_libsysk
@@ -65,4 +60,3 @@ build_ktk_test
 build_libkinet_test
 build_cat
 build_date
-build_sleep

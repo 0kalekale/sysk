@@ -3,3 +3,5 @@ PROJECT SYSK : set of libraries and programs for kalekale by kalekale
 everything is and will be licensed under AGPL3, however that may change in the future. 
 this is a long term project, may take years to reach a stable point (some libraries and some program may be usable early on)
 note: if you dont see any commits in months im probably just on a break
+
+codebase is a mess as of right now, no proper build system or uniform program formatting. 

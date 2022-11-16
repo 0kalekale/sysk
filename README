@@ -1,5 +1,6 @@
 PROJECT SYSK : set of libraries and programs for kalekale by kalekale
 
+read bin/README and lib/README for more info. 
 everything is and will be licensed under AGPL3, however that may change in the future. 
 this is a long term project, may take years to reach a stable point (some libraries and some program may be usable early on)
 note: if you dont see any commits in months im probably just on a break

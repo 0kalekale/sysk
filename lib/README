@@ -1,6 +1,8 @@
 project sysk libraries
 
-i. libktk : simple x11 gui toolkit 
-ii. libsysk : core library for sysk, which includes helpfull utilities, like a http server/client library
-iii. python/pylibktk : python bindings for libktk
-iv. rust/libktkrs : rust bindings for libktk
+i. 	libktk  : simple opengl gui toolkit 
+ii. 	libsysk : core library for sysk, which includes helpfull utilities 
+iii.	libkinet: internet protocal client side implemenations (servers too maybe)
+	-> HTTP/S
+	-> IRC  
+

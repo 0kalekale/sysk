@@ -37,20 +37,21 @@ build_libkinet_test() {
 	echo "CC	lib/libkinet/test.c"
 }
 
-build_cat() {
+# binaries are named with k_$util for obvious reasons 
+build_cu() {
 	$RUSTC bin/cat/cat.rs -o target/cat
 	echo "RUSTC	bin/cat/cat.rs"
-}
-
-build_date() {
-	cc $CFLAGS -std=$CSTD bin/date/date.c -o target/date
+	cc $CFLAGS -std=$CSTD bin/date/date.c -o target/k_date
 	echo "CC	bin/date/date.c"
+	cc $CFLAGS -std=$CSTD bin/uname/uname.c -o target/k_uname
+	echo "CC	bin/uname/uname.c"
+	cc $CFLAGS -std=$CSTD bin/true/true.c -o target/k_true
+	echo "CC 	bin/true/true.c"
+	cc $CFLAGS -std=$CSTD bin/tty/tty.c -o target/k_tty
+	echo "CC 	bin/tty/tty.c"
+	cc $CFLAGS -std=$CSTD bin/whoami/whoami.c -o target/k_whoami
 }
 
-build_uname() {
-	cc $CFLAGS -std=$CSTD bin/uname/uname.c -o target/uname
-	echo "CC	bin/uname/uname.c"
-}
 
 setup_builddir
 build_libktk
@@ -58,5 +59,4 @@ build_libsysk
 build_libkinet 
 build_ktk_test
 build_libkinet_test
-build_cat
-build_date
+build_cu

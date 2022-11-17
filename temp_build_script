@@ -39,7 +39,7 @@ build_libkinet_test() {
 
 # binaries are named with k_$util for obvious reasons 
 build_cu() {
-	$RUSTC bin/cat/cat.rs -o target/cat
+	$RUSTC bin/cat/cat.rs -o target/k_cat
 	echo "RUSTC	bin/cat/cat.rs"
 	cc $CFLAGS -std=$CSTD bin/date/date.c -o target/k_date
 	echo "CC	bin/date/date.c"

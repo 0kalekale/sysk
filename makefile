@@ -1,6 +1,6 @@
 all: targetdir cat libktk ktktest
 	
-include bin/cat/cat.mk
+include bin/bin.mk
 include lib/libktk/ktk.mk
 
 targetdir:

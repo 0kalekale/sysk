@@ -7,3 +7,6 @@
 [submodule "bin/CunnyWM"]
 	path = bin/CunnyWM
 	url = https://gitlab.com/0kalekale/CunnyWM
+[submodule "lib/extern/raylib"]
+	path = lib/extern/raylib
+	url = https://github.com/raysan5/raylib

@@ -3,19 +3,29 @@
 # C11 standard
 CSTD=c11
 # Basic CFLAGS
-CFLAGS="-Wall -Wextra -Werror -pedantic "
-
+CFLAGS="-Wall -Wextra -Werror -pedantic -Iinclude -I/usr/include"
+LIBKTKFLAGS = "target/libktk.o -Ltarget/raylib/raylib/ -l:libraylib.a -lX11 -lxcb -lm -lpthread -ldl -lrt"
 RUSTC=rustc
 RUSTFLAGS=
 
 setup_builddir() {
 	mkdir -p target 
 	mkdir -p target/tests
+	git submodule update --init --recursive
+}
+
+build_extern_deps() {
+	mkdir -p target/raylib
+	cd target/raylib
+	cmake ../../lib/extern/raylib
+	make -j8
+	cp raylib/include/r* ../../include 
+	cd ../..
 }
 
 build_libktk() {
 	echo "CC	lib/libktk/ktk.c"
-	cc $CFLAGS -std=$CSTD -c lib/libktk/ktk.c -lX11 -lxcb -I/usr/include -Iinclude -o target/libktk.a
+	cc $CFLAGS -std=$CSTD -c lib/libktk/ktk.c -o target/libktk.o
 }
 
 build_libsysk() {
@@ -29,7 +39,7 @@ build_libkinet() {
 
 build_ktk_test() {
 	echo "CC	lib/libktk/tests/sample.c"
-	cc $CFLAGS -std=$CSTD lib/libktk/tests/sample.c -Ltarget -lktk -lX11 -lxcb -I/usr/include -Iinclude -o target/tests/ktk_sample.out
+	cc $CFLAGS -std=$CSTD -c lib/libktk/tests/sample.c -o target/tests/ktk_sample.o
 }
 
 build_libkinet_test() {
@@ -52,8 +62,8 @@ build_cu() {
 	cc $CFLAGS -std=$CSTD bin/whoami/whoami.c -o target/k_whoami
 }
 
-
 setup_builddir
+build_extern_deps
 build_libktk
 build_libsysk
 build_libkinet 

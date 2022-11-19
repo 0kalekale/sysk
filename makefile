@@ -1,4 +1,4 @@
-all: targetdir cat libktk ktktest
+all: targetdir cat hxd libktk ktktest
 	
 include bin/bin.mk
 include lib/libktk/ktk.mk

@@ -22,27 +22,7 @@
 #include <stdlib.h>
 #include <stdbool.h>
 #include <stdint.h>
-
-
-// TODO: this should be in <sysk/vtesc.h>
-// terminal escape codes
-#define BLK "\e[0;30m"
-#define RED "\e[0;31m"
-#define GRN "\e[0;32m"
-#define YEL "\e[0;33m"
-#define BLU "\e[0;34m"
-#define MAG "\e[0;35m"
-#define CYN "\e[0;36m"
-#define WHT "\e[0;37m"
-#define RST "\e[0m"
-#define BLKB "\e[40m"
-#define REDB "\e[41m"
-#define GRNB "\e[42m"
-#define YELB "\e[43m"
-#define BLUB "\e[44m"
-#define MAGB "\e[45m"
-#define CYNB "\e[46m"
-#define WHTB "\e[47m"
+#include <sysk/vtesc.h>
 
 void dump_file(FILE* file, int offset, int bytes_to_read, int line_length);
 void print_line(uint8_t* buffer, int num_bytes, int offset, int line_length);

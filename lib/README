@@ -1,8 +1,4 @@
 project sysk libraries
-
-i. 	libktk  : simple opengl gui toolkit 
-ii. 	libsysk : core library for sysk, which includes helpfull utilities 
-iii.	libkinet: internet protocal client side implemenations (servers too maybe)
-	-> HTTP/S
-	-> IRC  
-
+i. 	libsysk 	: core library for sysk, which includes helpfull utilities 
+ii.	libkinet	: internet protocal client side implemenations (servers too maybe)
+iii. 	libkmk		: sysk math kernel library 

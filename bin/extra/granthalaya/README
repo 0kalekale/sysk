@@ -1,0 +1,7 @@
+!! work in progress !!
+
+Granthalaya: Sanskrit library for your Linux terminal
+
+building:
+`./build.sh`
+this installs the granthalaya binary in the granthalaya/ directory, the directory also contains the texts in granthalaya/library

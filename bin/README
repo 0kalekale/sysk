@@ -1,35 +1,24 @@
 sysk userland programs 
 
-i. 	liberbeato : book reader
+i. 	ritzchan: imageboard client
 	-> will have cli and gui modes 
-ii. 	mioamp : music player 
-	-> will have cli and gui modes
-iii.	miowatch: anime+youtube+cytube+twitch video player
-	-> will have cli and gui modes 
-iv. 	ritzchan: imageboard client
-	-> will have cli and gui modes
-v. 	ritzdit: simple text editor
-	-> gui only with libkkt 
-vi. 	ritzirc: simple irc
+ii. 	ritzirc: simple irc
 	-> cli and gui 
 	-> master client will run as a background deamon
 	-> the ultimate unix irc (everything text file)
-vii. 	syskvt: terminal emulator with libktk/opengl
-	-> a simple terminal emulator with libktk and opengl
-	-> should be easy to embed in other libktk programs (like ritzdit)
-ix. 	syskwidget: simple ktk widgets
+iii. 	syskwidget: simple widget
 	-> I JUST WANT FLOATING ANIME GIRLS ON MY DESKTOP 
-x. 	syskalender: calender
+iv.	syskalender: calender
 	-> cli only (support for the bikram sambat, date conversion and related tools)
-xi.	ritzblog: blog generator 
+v.	ritzblog: blog generator 
 	-> a script to generate my web log and rss (for kalekale.ga)
-xii. 	stawiki: static wiki gen 
+vi. 	stawiki: static wiki gen 
 	-> a script to generate simple wiki pages (for wiki.kalekale.ga)
-xiii. 	granthalaya: sanskrit texts 
+vii. 	granthalaya: sanskrit texts 
 	-> cli only
-xiv. 	lambdadelta: compiler for lambdadelta
+viii. 	lambdadelta: compiler for lambdadelta
 	-> a compiler for my language 
-xv.	sysk unix utilites
+ix.	sysk unix utilites
 	-> cat
 	-> sleep
 	-> date
@@ -37,7 +26,7 @@ xv.	sysk unix utilites
 	-> true
 	-> tty
 	-> more to come.
-xvi.	CunnyWM: fork of dwm
+x.	CunnyWM: fork of dwm
 	-> dynamic configuration 
 	-> xcb rewrite 
 	-> add bloat (to banish uriel's ghost)

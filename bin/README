@@ -14,8 +14,6 @@ v.	ritzblog: blog generator
 	-> a script to generate my web log and rss (for kalekale.ga)
 vi. 	stawiki: static wiki gen 
 	-> a script to generate simple wiki pages (for wiki.kalekale.ga)
-vii. 	granthalaya: sanskrit texts 
-	-> cli only
 viii. 	lambdadelta: compiler for lambdadelta
 	-> a compiler for my language 
 ix.	sysk unix utilites

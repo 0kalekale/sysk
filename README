@@ -6,3 +6,10 @@ this is a long term project, may take years to reach a stable point (some librar
 note: if you dont see any commits in months im probably just on a break
 
 codebase is a mess as of right now, no proper build system or uniform program formatting. 
+
+future plan:
+build system: meson 
+libraries will only be written in C11, python wrappers will exist 
+for GUI intermediate library like nuklear will be used 
+once the lambdadelta compiler is done newer programs will be written in lambdadelta 
+libraries will still be written in C11 

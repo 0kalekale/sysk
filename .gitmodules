@@ -1,9 +1,9 @@
 [submodule "bin/granthalaya"]
-	path = bin/granthalaya
+	path = bin/extra/granthalaya
 	url = https://gitlab.com/0kalekale/granthalaya
 [submodule "bin/lambdadelta"]
-	path = bin/lambdadelta
+	path = bin/toolchain/lambdadelta
 	url = https://gitlab.com/0kalekale/lambdadelta
 [submodule "bin/CunnyWM"]
-	path = bin/CunnyWM
+	path = bin/gui/CunnyWM
 	url = https://gitlab.com/0kalekale/CunnyWM

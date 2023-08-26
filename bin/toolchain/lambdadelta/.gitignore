@@ -1,5 +1,0 @@
-gitk
-target/
-include/grammar.h
-src/grammar.c
-src/scanner.c

@@ -1,10 +1,10 @@
 // all it does is call munmap for now
 
-	.file	"syskfree.s"
+	.file	"_syskfree.s"
 	.text
-	.globl	syskfree
-	.type	syskfree, @function
-syskfree:
+	.globl	_syskfree
+	.type	_syskfree, @function
+_syskfree:
 	pushq	%rbp
 	movq	%rsp, %rbp
 	subq	$16, %rsp

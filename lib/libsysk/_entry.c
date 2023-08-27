@@ -14,7 +14,8 @@ void master(void) {
 $ gcc hello_sysk.c libsysk.o 
 */
 
-int main(void) {
-	_sysk();
+int main(int argc, char *argv) {
+	struct mem* stack = _sysk_stack();
 	master(void);
+	return _sysk_clean(stack);
 }

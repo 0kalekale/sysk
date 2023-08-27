@@ -5,11 +5,11 @@ could have written this in C easily, why the fuck not in  asm
 just calls mmap for now, more stuff later
 */
 
-	.file	"syskalloc.s"
+	.file	"_syskalloc.s"
 	.text
-	.globl	syskalloc
-	.type	syskalloc, @function
-syskalloc:
+	.globl	_syskalloc
+	.type	_syskalloc, @function
+_syskalloc:
 	pushq	%rbp
 	movq	%rsp, %rbp
 	

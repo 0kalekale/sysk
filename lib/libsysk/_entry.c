@@ -15,7 +15,10 @@ $ gcc hello_sysk.c libsysk.o
 */
 
 int main(int argc, char *argv) {
-	struct mem* stack = _sysk_stack();
-	master(void);
-	return _sysk_clean(stack);
+	if(_sysk_stack()!=0) {
+		return -1;
+	}
+	master();
+	
+	return _sysk_clean();
 }

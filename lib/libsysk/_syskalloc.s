@@ -1,5 +1,5 @@
 /*
-WIP fast memory alloc (basically a worse mmap)
+WIP fast memory alloc (basically a wrapper around mmap)
 could have written this in C easily, why the fuck not in  asm
 
 just calls mmap for now, more stuff later

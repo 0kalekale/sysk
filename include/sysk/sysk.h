@@ -1,6 +1,6 @@
 #pragma once
 
-void master();
+void master(int argc, char *argv);
 
 struct mem {
 	void *ptr;

@@ -3,7 +3,8 @@
 	with demonstrations of syskalloc() and syskfree()
 
 	to build (run from libsysk dir, build system coming soon lol)
-	$ gcc example/sysk_helloworld.c _entry.c _sysk.c _syskalloc.s _syskfree.s -I../../include 
+	$ gcc example/sysk_helloworld.c _entry.s _sysk.c _syskmem.c _linux/_syscalls.c _linux/_syscall_linux.s -I../../include _linux/_void_syscalls.c  -o test -g
+	inb4 >holy fucking shit what the fuck is wrong with you just use a build system retard  
 */
 
 #include <sysk/sysk.h>

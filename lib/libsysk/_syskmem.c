@@ -3,7 +3,7 @@
 #define FAIL ((void *) -1)
 
 void *_syskalloc(unsigned int size) {
-	void *ret = _linux_mmap(0, size, 0x3, 0x22, 0, 0);
+	void *ret = _linux_mmap(0, size, 3, 34, 0, 0);
 	if (ret == FAIL) {
 		return FAIL; // TODO: should exit(-1) instead 
 	}

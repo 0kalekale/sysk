@@ -10,7 +10,7 @@
 #include <sysk/mem.h>
 #include <stdio.h>
 
-void master() {
+void master(int argc, char *argv) {
 	printf("hello world\n");
 
 	char* ptr = (char*)syskalloc(100);

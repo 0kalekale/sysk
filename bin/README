@@ -1,30 +1,7 @@
 sysk userland programs 
 
-i. 	ritzchan: imageboard client
-	-> will have cli and gui modes 
-ii. 	ritzirc: simple irc
-	-> cli and gui 
-	-> master client will run as a background deamon
-	-> the ultimate unix irc (everything text file)
-iii. 	syskwidget: simple widget
-	-> I JUST WANT FLOATING ANIME GIRLS ON MY DESKTOP 
-iv.	syskalender: calender
-	-> cli only (support for the bikram sambat, date conversion and related tools)
-v.	ritzblog: blog generator 
-	-> a script to generate my web log and rss (for kalekale.ga)
-vi. 	stawiki: static wiki gen 
-	-> a script to generate simple wiki pages (for wiki.kalekale.ga)
-viii. 	lambdadelta: compiler for lambdadelta
-	-> a compiler for my language 
-ix.	sysk unix utilites
-	-> cat
-	-> sleep
-	-> date
- 	-> whoami
-	-> true
-	-> tty
-	-> more to come.
-x.	CunnyWM: fork of dwm
-	-> dynamic configuration 
-	-> xcb rewrite 
-	-> add bloat (to banish uriel's ghost)
+core:		*nix utilities 
+internet: 	convinient tools for my internet experience 
+gui: 		gui tools
+toolchain: 	compilers and related tools
+

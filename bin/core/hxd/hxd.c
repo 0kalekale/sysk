@@ -16,12 +16,11 @@
     along with this program.  If not, see <https://www.gnu.org/licenses/>.
 */
 
-
-
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdbool.h>
 #include <stdint.h>
+
 #include <sysk/vtesc.h>
 
 void dump_file(FILE* file, int offset, int bytes_to_read, int line_length);

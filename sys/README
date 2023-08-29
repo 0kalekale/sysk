@@ -1,0 +1,4 @@
+linux kernel moduels for sysk
+
+screenbuf:
+	a linux /dev char device, returns the screen's pixel buffer when opened

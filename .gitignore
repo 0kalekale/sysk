@@ -1,2 +1,19 @@
 target/
 gitk
+
+# WTF ??????????????????????
+sys/screenbuf/module.symvers  
+sys/screenbuf/modules.order 
+sys/screenbuf/screenbuf.ko  
+sys/screenbuf/screenbuf.mod  
+sys/screenbuf/screenbuf.mod.c  
+sys/screenbuf/screenbuf.mod.o  
+sys/screenbuf/screenbuf.o
+sys/screenbuf/Module.symvers
+sys/screenbuf/.Module.symvers.cmd
+sys/screenbuf/.modules.order.cmd
+sys/screenbuf/.screenbuf.ko.cmd
+sys/screenbuf/.screenbuf.mod.cmd
+sys/screenbuf/.screenbuf.mod.o.cmd
+sys/screenbuf/.screenbuf.o.cmd
+

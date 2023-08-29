@@ -7,9 +7,18 @@ note: if you dont see any commits in months im probably just on a break
 
 codebase is a mess as of right now, no proper build system or uniform program formatting. 
 
-future plan:
-build system: meson 
-libraries will only be written in C11, python wrappers will exist 
-for GUI intermediate library like nuklear will be used 
+plans:
+build system: kcompile (my own builder src:/bin/core/kcompile) 
+pure C11 for libraries and programs (C2x when it hits)
+
+major programs:
+	- everything in /bin/core (*nix utils)
+	- lambdadelta compiler (my own language, POC transpiler to C WIP, will start work on the compiler once I have the specs down)
+	- a very linux-like wayland window manager (we have cunnywm but it uses X as of right now)
+major libraries:
+	- libkinet, http/s and irc/s client server libraries 
+	- libsysk, layer on top of the C language for sysk programs
+	- libkmk, fast and easy to use math kernel for intel cpus 
+
 once the lambdadelta compiler is done newer programs will be written in lambdadelta 
 libraries will still be written in C11 

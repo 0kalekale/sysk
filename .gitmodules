@@ -1,6 +1,3 @@
-[submodule "bin/gui/CunnyWM"]
-	path = bin/gui/CunnyWM
-	url = https://gitlab.com/0kalekale/CunnyWM
 [submodule "bin/toolchain/lambdadelta"]
 	path = bin/toolchain/lambdadelta
 	url = https://gitlab.com/0kalekale/lambdadelta

@@ -1,10 +1,17 @@
-/* Compile with: g++ -Wall –Werror -o shell shell.c */
+/*
+	shell for project sysk 
+	base was stolen from https://gist.github.com/parse/966049
+	newer code under AGPL3
+	by 0kalekale 
+*/
+
 
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 #include <ctype.h>
 #include <unistd.h>
+#include <limits.h>
  
 #include <sys/types.h>
 #include <sys/wait.h>
@@ -31,8 +38,7 @@ int command_pipe[2];
  * So if 'command' returns a file descriptor, the next 'command' has this
  * descriptor as its 'input'.
  */
-static int command(int input, int first, int last)
-{
+static int command(int input, int first, int last) {
 	int pipettes[2];
  
 	/* Invoke pipe */
@@ -77,8 +83,7 @@ static int command(int input, int first, int last)
 /* Final cleanup, 'wait' for processes to terminate.
  *  n : Number of times 'command' was invoked.
  */
-static void cleanup(int n)
-{
+static void cleanup(int n) {
 	int i;
 	for (i = 0; i < n; ++i) 
 		wait(NULL); 
@@ -87,13 +92,21 @@ static void cleanup(int n)
 static int run(char* cmd, int input, int first, int last);
 static char line[1024];
 static int n = 0; /* number of calls to 'command' */
+static char cwd[PATH_MAX];
+
+int main() {
+
+	char *prompt; 
+	if ((prompt=getenv("PROMPT")) == NULL) {
+		prompt = "$> ";
+	}
+	printf("SYSTEM K SHELL: NOT A POSIX SHELL\n");
+
+	getcwd(cwd, PATH_MAX);
  
-int main()
-{
-	printf("SIMPLE SHELL: Type 'exit' or send EOF to exit.\n");
 	while (1) {
 		/* Print the command prompt */
-		printf("$> ");
+		printf("%s %s", cwd, prompt);
 		fflush(NULL);
  
 		/* Read a command line */
@@ -124,26 +137,30 @@ int main()
  
 static void split(char* cmd);
  
-static int run(char* cmd, int input, int first, int last)
-{
+static int run(char* cmd, int input, int first, int last) {
 	split(cmd);
 	if (args[0] != NULL) {
 		if (strcmp(args[0], "exit") == 0) 
 			exit(0);
+		else if (strcmp(args[0], "cd") == 0) { 
+			if(chdir(args[1]) != 0) {
+				perror("cd: failed\n");
+				return -1;
+			}
+			else { getcwd(cwd, PATH_MAX); return 0; }
+		}
 		n += 1;
 		return command(input, first, last);
 	}
 	return 0;
 }
  
-static char* skipwhite(char* s)
-{
+static char* skipwhite(char* s) {
 	while (isspace(*s)) ++s;
 	return s;
 }
  
-static void split(char* cmd)
-{
+static void split(char* cmd) {
 	cmd = skipwhite(cmd);
 	char* next = strchr(cmd, ' ');
 	int i = 0;

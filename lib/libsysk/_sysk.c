@@ -53,4 +53,22 @@ int syskfree(void *ptr) {
 		}
 	}
 	return -1;
-} 
+}
+
+
+// reallocate syskalloc()'ed block
+void* syskrealloc(void *ptr, unsigned int size) {
+	void *retptr;
+
+	for(int i = 0; i<1024; i++) {
+		if (ptr == _master_stack_1024_16[i].ptr) {
+			retptr = _syskrealloc(ptr, size, _master_stack_1024_16[i].size);
+			if (retptr == (void*)-1) {
+				return -1;
+			}
+			_master_stack_1024_16[i].size = size;
+		}
+	}
+
+	return retptr;
+}

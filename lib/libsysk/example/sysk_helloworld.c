@@ -15,5 +15,11 @@ void master(int argc, char *argv) {
 	printf("hello world\n");
 
 	char* ptr = (char*)syskalloc(100);
+	printf("%x\n", ptr);
+	ptr[0] = 'A';
+	ptr = syskrealloc(ptr, 200); // FIXME: ptr[0] should not be affected after reallocing  
+	printf("%x\n", ptr);
+	ptr[120] = 'B';
+	printf("%c %c", ptr[0], ptr[120]);
 	syskfree(ptr);
 }

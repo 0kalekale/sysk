@@ -14,4 +14,4 @@ int _sysk_clean();
 
 void* syskalloc(unsigned int size);
 int syskfree(void *ptr);
-
+void* syskrealloc(void *ptr, unsigned int size);

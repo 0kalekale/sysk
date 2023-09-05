@@ -42,6 +42,11 @@ void* syskalloc(unsigned int size)  {
 	_master_stack_1024_16[stack_counter].size = size; 
 	
 	stack_counter += 1;
+	/*
+	FIXME: instead of using a stack_counter, which is fine for a small scale
+	program, have syskalloc() find a free block in the _master_stack_1024_16 
+	and then allocate it there.
+	*/
 	return retptr;
 }
 
@@ -77,12 +82,4 @@ void* syskrealloc(void *ptr, unsigned int size) {
 	_syskfree(tmp, size);
 
 	return retptr;
-}
-
-void syskmemcpy(char *dest, char *src, unsigned int size) {
-	for (int i = 0; i<size; i++ ) {
-		*dest = *src;
-		dest++;
-		src++;
-	}
 }

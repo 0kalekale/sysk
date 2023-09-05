@@ -59,6 +59,9 @@ int syskfree(void *ptr) {
 // reallocate syskalloc()'ed block
 void* syskrealloc(void *ptr, unsigned int size) {
 	void *retptr;
+	void *tmp = _syskalloc(size);
+
+	syskmemcpy(tmp, ptr, size);
 
 	for(int i = 0; i<1024; i++) {
 		if (ptr == _master_stack_1024_16[i].ptr) {
@@ -69,6 +72,17 @@ void* syskrealloc(void *ptr, unsigned int size) {
 			_master_stack_1024_16[i].size = size;
 		}
 	}
+	
+	syskmemcpy(retptr, tmp, size);
+	_syskfree(tmp, size);
 
 	return retptr;
+}
+
+void syskmemcpy(char *dest, char *src, unsigned int size) {
+	for (int i = 0; i<size; i++ ) {
+		*dest = *src;
+		dest++;
+		src++;
+	}
 }

@@ -14,7 +14,6 @@ int _syskfree(void *ptr, unsigned int size) {
 	return _linux_munmap(ptr, size);
 }
 
-// FIXME; the data in the original buffer should not change when reallocing the block
 void *_syskrealloc(void *ptr, unsigned int tosize, unsigned int fromsize) {
 	_syskfree(ptr, fromsize);
         void *ret = _linux_mmap(ptr, tosize, 3, 34, 0, 0);

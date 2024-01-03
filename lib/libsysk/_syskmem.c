@@ -1,6 +1,5 @@
+#include <sysk/sysk.h>
 #include <sysk/_linux.h>
-
-#define FAIL ((void *) -1)
 
 void *_syskalloc(unsigned int size) {
 	void *ret = _linux_mmap(0, size, 3, 34, 0, 0);

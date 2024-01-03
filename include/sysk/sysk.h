@@ -1,10 +1,16 @@
 #pragma once
 
+#define FAIL ((void *) -1)
+
 void master(int argc, char *argv);
 
 struct mem {
 	void *ptr;
 	unsigned int size; 
+};
+struct stack {
+	struct mem *ptr;
+	unsigned int stack_counter;
 };
 
 int _sysk_stack();
